@@ -1,0 +1,212 @@
+{
+  "main": {
+    "id": "818f4114d3bdf4ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "89462fa8f5919ce8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0bb0156abd916d40",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dart Learning/Language Tour.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Language Tour"
+            }
+          },
+          {
+            "id": "282f08306425dd82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dart Learning/Language Tour.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Language Tour"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5d16442f4da9ed71",
+    "type": "split",
+    "children": [
+      {
+        "id": "2996e1ff3860ee0d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d7505395c7fa1281",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "55c87040d9fe7f9a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "18743c849ad0ad0d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4c03f701501bfa1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "27c1bcb3ddcc0840",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "751421e9a2dd1a34",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Dart Learning/Language Tour.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Language Tour"
+            }
+          },
+          {
+            "id": "c9e3a831902303d5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Dart Learning/Language Tour.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Language Tour"
+            }
+          },
+          {
+            "id": "26bfaad008f7c2b8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2a472d9a2c689654",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "a04ef3f1ce367c88",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Dart Learning/Language Tour.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Language Tour"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "282f08306425dd82",
+  "lastOpenFiles": [
+    "Dart Learning/Terminology.md",
+    "State Management/Async Redux.md",
+    "Dart Learning/Language Tour.md",
+    "Pasted image 20260107090518.png",
+    "State Management",
+    "Pasted image 20260106092637.png",
+    "Dart Learning",
+    "Welcome.md"
+  ]
+}
