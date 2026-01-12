@@ -176,4 +176,187 @@ const aConstList = [1, 2, 3]; // compile-time constant, but not a primitive
 - **Minification** #Senior_level 
 ---
 # Records
-dksamda
+```
+// Record type annotation in a variable declaration:
+(String, int) record;
+// Initialize it with a record expression:
+record = ('A string', 123);
+-
+named go like this:
+({int a, bool b}) record;
+record = (a: 123, b: true);
+```
+
+```
+        ({int a, int b}) recordAB = (a: 1, b: 2);
+        ({int x, int y}) recordXY = (x: 3, y: 4);
+        ```
+        Here, `recordAB` has fields named `a` and `b`, while `recordXY` has fields named `x` and `y`. Even though both contain two integers, their _names_ differ — so Dart considers them **different types**. 👉 Assigning one to the other (`recordAB = recordXY`) causes a **compile error**.
+```
+        
+```
+Positional fields** are defined only by their order and types, not by names.
+
+        (int a, int b) recordAB = (1, 2);
+        (int x, int y) recordXY = (3, 4);
+        recordAB = recordXY; // OK
+        
+        Here, the names `a` and `x` are just **documentation labels**. They don’t affect the type. Both records are simply `(int, int)` — so assignment works fine.
+```
+-
+Use **positional records** when order alone is enough (like swapping two numbers). Use **named records** when meaning matters (like distinguishing `width` vs `height`).
+-
+Record fields are accessible through built-in getters. Records are immutable, so fields do not have setters.
+-
+Named fields expose getters of the same name. Positional fields expose getters of the name `$<position>`, skipping named fields:
+```
+var record = ('first', a: 2, b: true, 'last');
+
+print(record.$1); // Prints 'first'
+print(record.a); // Prints 2
+print(record.b); // Prints true
+print(record.$2); // Prints 'last'
+```
+-
+There is no type declaration for individual record types. Records are structurally typed based on the types of their fields. A record's _shape_ (the set of its fields, the fields' types, and their names, if any) uniquely determines the type of a record.
+-
+Each field in a record has its own type. Field types can differ within the same record. The type system is aware of each field's type wherever it is accessed from the record:
+```
+(num, Object) pair = (42, 'a');
+
+var first = pair.$1; // Static type `num`, runtime type `int`.
+var second = pair.$2; // Static type `Object`, runtime type `String`.
+```
+-
+### 🔹 Why Dart Added Records
+- **Multiple returns:** Functions can return more than one value without ceremony.
+- **Type safety:** Unlike `List` or `Map`, the compiler knows exactly what each field should be.
+- **Flexibility:** You can mix positional and named fields depending on whether clarity or brevity matters.
+- **Performance:** Records are optimized under the hood, so they’re lighter than defining a class just to hold two values.
+-
+### 🔹 When to Use Records vs. Old Way
+- Use **classes** when the data has behavior (methods) or will be reused widely across your app.
+- Use **records** when you just need to bundle a few values together temporarily — like returning multiple results from a function.
+- Use **lists/maps** when the values are homogeneous or dynamic.
+-
+### 🔹 4. Async Operations with Different Types
+Records are especially useful when combining multiple futures of different types.
+**Example: Parallel API calls**
+
+```
+Future<(User, List<Post>)> fetchUserAndPosts() async {
+  final user = await fetchUser();
+  final posts = await fetchPosts();
+  return (user, posts);
+}
+
+final (user, posts) = await fetchUserAndPosts();
+```
+✅ Cleaner than juggling two separate futures or wrapping them in a custom class.
+-
+```
+final buttons = [
+  (
+    label: "Button I",
+    icon: const Icon(Icons.upload_file),
+    onPressed: () => print("Action -> Button I"),
+  ),
+  (
+    label: "Button II",
+    icon: const Icon(Icons.info),
+    onPressed: () => print("Action -> Button II"),
+  )
+];
+```
+
+```
+Column(
+  children: buttons.map((btn) => ElevatedButton(
+    onPressed: btn.onPressed,
+    child: Row(
+      children: [btn.icon, Text(btn.label)],
+    ),
+  )).toList(),
+);
+```
+-
+### Records and typedefs
+
+You can choose to use [typedefs] to give the record type itself a name, and use that rather than writing out the full record type. This method allows you to state that some fields can be null (`?`), even if none of the current entries in the list have a null value.
+String
+
+```
+typedef ButtonItem = ({String label, Icon icon, void Function()? onPressed});
+final List<ButtonItem> buttons = [
+  // ...
+];
+```
+Code can work with the given button definitions the same way it would with simple class instances:
+```
+List<Container> widget = [
+  for (var button in buttons)
+    Container(
+      margin: const EdgeInsets.all(4.0),
+      child: OutlinedButton.icon(
+        onPressed: button.onPressed,
+        icon: button.icon,
+        label: Text(button.label),
+      ),
+    ),
+];
+```
+You could even decide to later change the record type to a class type to add methods.
+
+// نموذج الـ response من الـ API
+```
+class UserResponse {
+  final bool isActivated;
+  final int remainingActivationDays;
+
+  UserResponse({
+    required this.isActivated,
+    required this.remainingActivationDays,
+  });
+}
+
+// دالة تحدد حالة المستخدم
+String checkUserPlan(UserResponse response) {
+  // نعمل record من المتغيرين المرتبطين
+  var status = (response.isActivated, response.remainingActivationDays);
+
+  // نعمل switch على record واحد بدل ifs كتير
+  switch (status) {
+    case (true, >0): // الحساب مفعل ولسه فيه أيام متبقية
+      return "مسموح يدخل على الخطة المدفوعة ✅";
+    case (true, 0): // مفعل لكن خلصت المدة
+      return "انتهت مدة التفعيل ❌";
+    case (false, _): // مش مفعل أصلاً
+      return "الحساب غير مفعل ❌";
+    default:
+      return "حالة غير معروفة";
+  }
+}
+
+void main() {
+  var user1 = UserResponse(isActivated: true, remainingActivationDays: 5);
+  var user2 = UserResponse(isActivated: true, remainingActivationDays: 0);
+  var user3 = UserResponse(isActivated: false, remainingActivationDays: 10);
+
+  print(checkUserPlan(user1)); // مسموح يدخل على الخطة المدفوعة ✅
+  print(checkUserPlan(user2)); // انتهت مدة التفعيل ❌
+  print(checkUserPlan(user3)); // الحساب غير مفعل ❌
+}
+```
+
+---
+# Collections
+-
+Iterables provide the `map()` method, which gives you all the results in a single object:
+```
+var teas = ['green', 'black', 'chamomile', 'earl grey'];
+var loudTeas = teas.map((tea) => tea.toUpperCase());
+loudTeas.forEach(print);
+```
+Note:
+The object returned by `map()` is an Iterable that's _lazily evaluated_: your function isn't called until you ask for an item from the returned object.
+-
