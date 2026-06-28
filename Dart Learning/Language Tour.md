@@ -1,18 +1,6 @@
 # Variables
 
-When you mark a variable as `late` but initialize it at its declaration, then the initializer runs the first time the variable is used. This lazy initialization is handy in a couple of cases:
-
-- The variable might not be needed, and initializing it is costly.
-- You're initializing an instance variable, and its initializer needs access to `this`.
-
-In the following example, if the `temperature` variable is never used, then the expensive `readThermometer()` function is never called:
-
-```
-// This is the program's only call to readThermometer().
-late String temperature = readThermometer(); // Lazily initialized.
-```
----
-# Const
+## Const
 var foo = const [];
 const baz = []; // Equivalent to `const []`
 foo = [1, 2, 3]; // Was const []
