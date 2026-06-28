@@ -11,14 +11,14 @@
             "id": "0dfbdd1dc99e6dd1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Dart Learning/Deep Dart Learning.md",
-                "mode": "preview",
-                "source": false
+                "aFile": ".gitignore",
+                "bFile": ".gitignore",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Deep Dart Learning"
+              "icon": "diff",
+              "title": "Diff: .gitignore  (Working Tree)"
             }
           },
           {
@@ -210,8 +210,8 @@
   },
   "active": "0dfbdd1dc99e6dd1",
   "lastOpenFiles": [
-    "Dart Learning/Language Tour.md",
     "Dart Learning/Deep Dart Learning.md",
+    "Dart Learning/Language Tour.md",
     "Dart Learning/Terminology.md",
     "Pasted image 20260107090518.png",
     "State Management/Async Redux.md",
